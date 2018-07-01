@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source ~/.config/themed
+
+__FILE__=`readlink -f $0`
+__DIR__=`dirname $__FILE__`
+
+dconf watch /org/gnome/desktop/interface/gtk-theme | while read -r LINE ; do
+  [[ $LINE != "'$THEME_DARK'" && $LINE != "'$THEME_LIGHT'" ]] && continue
+  
+  THEME="light"
+  [[ $LINE == "'$THEME_DARK'" ]] && THEME="dark"
+  export THEME 
+  find "$__DIR__/apply.d" -name "*.sh" -type f -print0 | xargs -L1 -0 sh 
+done

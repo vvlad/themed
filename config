@@ -1,0 +1,13 @@
+
+
+THEME_DARK="Arc-Dark"
+THEME_LIGHT="Arc"
+
+BASE16_DARK="ocean"
+BASE16_LIGHT="tomorrow"
+
+DASH_TO_DOCK_LIGHT="#ffffff"
+DASH_TO_DOCK_DARK="#343843"
+
+CODE_LIGHT="Tomorrow"
+CODE_DARK="Ocean Dark Extended"

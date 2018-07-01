@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source ~/.config/themed 
+
+case $1 in
+  dark) 
+    dconf write /org/gnome/desktop/interface/gtk-theme "'$THEME_DARK'"
+    ;;
+  light)
+    dconf write /org/gnome/desktop/interface/gtk-theme "'$THEME_LIGHT'"
+    ;;
+  status)
+    THEME='dark'
+    [[ `dconf read /org/gnome/desktop/interface/gtk-theme` == "'$THEME_LIGHT'" ]] && THEME='light'
+    echo $THEME
+    ;;
+  toggle)
+    THEME=$THEME_LIGHT
+    [[ `dconf read /org/gnome/desktop/interface/gtk-theme` == "'$THEME_LIGHT'" ]] && THEME=$THEME_DARK
+    dconf write /org/gnome/desktop/interface/gtk-theme "'$THEME'"
+esac
